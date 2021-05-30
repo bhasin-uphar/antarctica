@@ -59,7 +59,7 @@ function queryRow(table, column, value, fetch, callback) {
 var schema = buildSchema(`
     type Query {
         message: String,
-        test: json,
+        test: String,
     }
 `);
 // Root resolver
