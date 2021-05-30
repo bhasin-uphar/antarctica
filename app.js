@@ -14,7 +14,7 @@ var { graphqlHTTP } = require('express-graphql');
 
 const pool = mysql.createConnection({
     connectionLimit : 100,
-    host: 'localhost',
+    host: 'https://5367a8626a72.ngrok.io',
     user: 'root',
     password: '',
     database: 'antarctica'
