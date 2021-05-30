@@ -132,10 +132,8 @@ app.post('/login', async (req, res) => {
                 if (passwordMatch) {
                     let usrname = req.body.email;
                     var token = jwt.sign({ email: req.body.email }, 'shhhhh');
-                    // res.send(`<div align ='center'><h2>login successful</h2></div><br><br><br><div align ='center'><h3>Hello ${usrname}</h3></div><br><br><div align='center'><a href='./login.html'>logout</a></div>`);
                     res.json({"status":"successful", "token":token});
                 } else {
-                    // res.send("<div align ='center'><h2>Invalid email or password</h2></div><br><br><div align ='center'><a href='./login.html'>login again</a></div>");
                     res.json({"status":"error", "message":"Invalid email or password"});
                 }
             }
@@ -144,7 +142,6 @@ app.post('/login', async (req, res) => {
                 let fakePass = `$2b$$10$ifgfgfgfgfgfgfggfgfgfggggfgfgfga`;
                 await bcrypt.compare(req.body.password, fakePass);
         
-                // res.send("<div align ='center'><h2>Invalid email or password</h2></div><br><br><div align='center'><a href='./login.html'>login again<a><div>");
                 res.json({"status":"error", "message":"Invalid email or password"});
             }
         })
