@@ -75,6 +75,10 @@ app.use('/graphql', graphqlHTTP({
     graphiql: true
 }));
 
+app.get('/',(req,res) => {
+    console.log('Hi');
+    res.sendFile(path.join(__dirname,'./public/index.html'));
+});
 
 app.post('/register', async (req, res) => {
     try{
