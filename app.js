@@ -14,7 +14,7 @@ var { graphqlHTTP } = require('express-graphql');
 
 const pool = mysql.createConnection({
     connectionLimit : 100,
-    host: 'localhost',
+    host: '0.0.0.0',
     user: 'root',
     password: '',
     database: 'antarctica'
@@ -250,6 +250,6 @@ app.post('/user-list', function(req, res, next) {
  
  });
 
-server.listen(3000, function(){
+server.listen(process.env.PORT || 3000, function(){
     console.log("server is listening on port: 3000");
 });
