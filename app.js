@@ -11,14 +11,7 @@ var validator = require("email-validator");
 var express_graphql = require('express-graphql');
 var { buildSchema } = require('graphql');
 var { graphqlHTTP } = require('express-graphql');
-
-const pool = mysql.createConnection({
-    connectionLimit : 100,
-    host: '0.0.0.0',
-    user: 'root',
-    password: '',
-    database: 'antarctica'
-  });
+var { pool } = require('./db_setup.js');
 
 
 
@@ -30,12 +23,15 @@ app.use(express.json());
 function addRow(table, columns, values, callback) {
     let insertQuery = 'INSERT INTO ?? (??) VALUES (?)';
     let query = mysql.format(insertQuery,[table,columns,values]);
+    console.log(query);
     pool.query(query,(err, response) => {
         if(err) {
+            console.log(err);
             console.error(err);
             return;
         }
         // rows added
+        
         return callback(response);
     });
 }
@@ -81,7 +77,9 @@ app.get('/',(req,res) => {
 });
 
 app.post('/register', async (req, res) => {
-    try{
+    console.log("in register api");
+    console.log(req.body);
+    // try{
         if (!["Consulting", "Frontend Development", "Backend Development", "DevOps", "Cloud Computing", "UI UX"].includes(req.body.organization)){
             return res.json({"status":"error", "message":'organisation should be from Consulting, Frontend Development, Backend Development, DevOps, Cloud Computing, UI UX.'});
         }
@@ -113,9 +111,9 @@ app.post('/register', async (req, res) => {
             } else {
                 res.json({"status":"error", "message":"email already exists"});
             }});
-    } catch{
-        res.json({"status":"error", "message":"internal server error"});
-    }
+    // } catch{
+    //     res.json({"status":"error", "message":"internal server error"});
+    // }
 });
 
 
