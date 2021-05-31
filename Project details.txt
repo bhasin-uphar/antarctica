@@ -1,0 +1,67 @@
+Project details
+RESTful API for Registration, Login & a getUserList using Node.js runtime environment
+
+Environment setup and library versions
+"bcrypt": "5.0.1",
+"body-parser": "1.19.0",
+"ejs": "3.1.6",
+"email-validator": "2.0.4",
+"express": "4.17.1",
+"jsonwebtoken": "8.5.1",
+"mysql": "2.18.1"
+
+Git repository
+Project Link: https://github.com/bhasin-uphar/antarctica
+Repository Link: https://github.com/bhasin-uphar/antarctica.git
+
+Database setup
+Database setup file: ./db_setup.js
+Current Endpoint: database-1.chdmubxnlyut.ap-south-1.rds.amazonaws.com
+
+Authentication mechanism
+JSON Web Token (JWT) is used for means of representing claims to be transferred between two parties. The claims in a JWT are encoded as a JavaScript Object Notation (JSON) object that is used as the payload of a JSON Web Signature (JWS) structure or as the plaintext of a JSON Web Encryption (JWE) structure, enabling the claims to be digitally signed or MACed and/or encrypted.
+
+Hosting information
+Server Endpoint: http://ec2-65-0-4-248.ap-south-1.compute.amazonaws.com:3000
+API Base url: http://ec2-65-0-4-248.ap-south-1.compute.amazonaws.com:3000
+Register Api
+"endpoint": BASE_URL/register,
+"method": "POST",
+"body": {
+?"first_name": "",
+?"last_name": "",
+?"organization": "",
+?"email": "",
+?"password": ""
+?},
+"response": {
+?"status": "successful",
+?"message": "account created"
+?},
+
+Login Api
+"endpoint": BASE_URL/login,
+"method": "POST",
+"body": {
+?"email": "",
+?"password": "",
+?},
+"response": {
+?"status": "successful",
+?"token": "eyJhb..."
+?},
+
+User List Api
+"endpoint": BASE_URL/user-list,
+"method": "GET",
+"params": {
+?"search": "",
+?"page": "",
+?"field": "",
+?"order": "",
+?},
+"response": {
+?"data": [],
+?"page_info": {}
+?},
+
